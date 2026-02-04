@@ -2,12 +2,7 @@ import oracledb
 
 def get_connection():
     return oracledb.connect(
-        user="SYSDBA",
+        user="PESTCONTROL",
         password="Abc@1234",
-        dsn="localhost:1521/orcl"
+        dsn="localhost:1521/ORCLPDB"
     )
-
-conn = get_connection()
-cur = conn.cursor()
-
-cur.execute("select * from dual")

@@ -13,18 +13,26 @@ def generate_service_visits(start_date: date, service_per_year: int):
         for i in range(service_per_year)
     ]
 
+def show_client():
+    conn = get_connection()
+    cur = conn.cursor()
+
+    cur.execute("SELECT * FROM USR_TBL")
+
+    columns = [col[0].lower() for col in cur.description]
+    all_client = [dict(zip(columns, row)) for row in cur.fetchall()]
+
+    conn.close()
+    return all_client
 
 def create_client(user_name: str, phone_no: str):
     conn = get_connection()
     cur = conn.cursor()
 
-    cur.execute("SELECT NVL(MAX(user_id),0)+1 FROM USER")
+    cur.execute("SELECT NVL(MAX(user_id),0)+1 FROM USR_TBL")
     user_id = cur.fetchone()[0]
 
-    cur.execute("""
-        INSERT INTO USER (user_id, user_name, phone_no, created_ts)
-        VALUES (:1, :2, :3, SYSTIMESTAMP)
-    """, (user_id, user_name, phone_no))
+    cur.execute("INSERT INTO USR_TBL (user_id, user_name, phone_no, created_ts) VALUES (:1, :2, :3, SYSTIMESTAMP)", (user_id, user_name, phone_no))
 
     conn.commit()
     conn.close()

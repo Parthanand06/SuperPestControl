@@ -1,5 +1,11 @@
 from pydantic import BaseModel
-from datetime import date
+from datetime import date, datetime
+
+class ShowClient(BaseModel):
+    user_id: int
+    user_name: str
+    phone_no: str
+    created_ts: datetime
 
 class ClientCreate(BaseModel):
     user_name: str
