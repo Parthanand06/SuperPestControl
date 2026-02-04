@@ -1,12 +1,24 @@
 from fastapi import FastAPI
-from app.schemas import ShowClient, ClientCreate, SubscriptionCreate
-from app.services import create_client, create_subscription, show_client
+from app.schemas import ShowClient, ClientCreate, SubscriptionCreate, GetUserDetails
+from app.services import create_client, create_subscription, show_client, get_user_details_by_id
+from fastapi import FastAPI, Request
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 from typing import List
 app = FastAPI(title="Pest Control Backend")
 
-@app.get('/',response_model=List[ShowClient])
-def show():
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
+
+# Templates
+templates = Jinja2Templates(directory="app/templates")
+@app.get("/")
+def home(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
+
+@app.get("/api/clients", response_model=List[ShowClient])
+def get_clients():
     return show_client()
+
 @app.post("/clients")
 def create_client_api(payload: ClientCreate):
     user_id = create_client(
@@ -48,3 +60,6 @@ def create_subscription_api(payload: SubscriptionCreate):
             detail="Internal server error"
         )
 
+@app.get("/userdetails/{user_id}", response_model=List[GetUserDetails])
+def get_usr_details_by_id(user_id: int):
+    return get_user_details_by_id(user_id)
