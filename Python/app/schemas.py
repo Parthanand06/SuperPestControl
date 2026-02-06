@@ -17,3 +17,15 @@ class SubscriptionCreate(BaseModel):
     service_id: int
     service_per_year: int
     start_date: date
+
+class GetUserDetails(BaseModel):
+    user_id: int
+    user_name: str
+    phone_no: str
+    service_name: str
+    service_per_year: int
+    start_date: date
+    end_date: date
+    status: str
+    visit_date: date
+    visit_status: str

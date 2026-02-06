@@ -80,3 +80,21 @@ def create_subscription(user_id, service_id, service_per_year, start_date):
         conn.close()
 
     return order_id
+
+def get_user_details_by_id(user_id: int):
+    conn = get_connection()
+    cur = conn.cursor()
+    query = f"""select os.USER_ID, USER_NAME, PHONE_NO, SERVICE_NAME, SERVICE_PER_YEAR,
+                    START_DATE, END_DATE, STATUS, VISIT_DATE, VISIT_STATUS from USR_TBL ut 
+                    INNER JOIN ORDER_SUBSCRIPTION os on ut.user_id=os.user_id 
+                    INNER JOIN SVC_TBL sv on sv.service_id=os.service_id 
+                    INNER JOIN SERVICE_VISIT sv on os.order_id=sv.order_id 
+                    where os.USER_ID={user_id}"""
+
+    cur.execute(query)
+
+    columns = [col[0].lower() for col in cur.description]
+    user_details = [dict(zip(columns, row)) for row in cur.fetchall()]
+
+    conn.close()
+    return user_details
