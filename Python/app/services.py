@@ -30,8 +30,8 @@ def create_client(user_name: str, phone_no: str):
     cur = conn.cursor()
 
     cur.execute("SELECT NVL(MAX(user_id),0)+1 FROM USR_TBL")
-    print("Here")
     user_id = cur.fetchone()[0]
+
     cur.execute("INSERT INTO USR_TBL (user_id, user_name, phone_no, created_ts) VALUES (:1, :2, :3, SYSTIMESTAMP)", (user_id, user_name, phone_no))
 
     conn.commit()

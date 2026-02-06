@@ -1,75 +1,36 @@
-/* PAGE CONTAINER */
-.page-container {
-    width: 90%;
-    max-width: 1100px;
-    margin: 30px auto;
-    padding: 20px;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    padding: 30px;
 }
 
-/* CARD DESIGN */
-.card {
-    background: white;
-    border-radius: 12px;
-    padding: 25px;
-    box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
-}
-
-/* HEADING */
-.page-title {
+h2 {
     text-align: center;
-    font-size: 30px;
-    font-weight: bold;
-    margin-bottom: 20px;
     color: #333;
 }
 
-/* SEARCH BAR */
-.search-box {
-    width: 300px;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    outline: none;
-    margin-bottom: 20px;
-}
-
-.search-box:focus {
-    border: 1px solid #007bff;
-}
-
-/* TABLE STYLING */
 table {
-    width: 100%;
     border-collapse: collapse;
-    border-radius: 10px;
-    overflow: hidden;
+    margin: 20px auto;
+    width: 80%;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-thead {
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+th {
     background-color: #007bff;
     color: white;
 }
 
-th {
-    padding: 14px;
-    text-align: left;
-    font-size: 16px;
+tr:nth-child(even) {
+    background-color: #f2f2f2;
 }
 
-td {
-    padding: 12px;
-    border-bottom: 1px solid #ddd;
-    font-size: 15px;
-    color: #333;
-}
-
-/* ROW EFFECT */
-tbody tr:nth-child(even) {
-    background-color: #f8f9fa;
-}
-
-tbody tr:hover {
-    background-color: #e9f3ff;
-    cursor: pointer;
-    transition: 0.2s;
+tr:hover {
+    background-color: #e9f2ff;
 }

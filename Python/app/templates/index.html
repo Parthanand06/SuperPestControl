@@ -2,39 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Client List</title>
+    <title>SUPER PEST CONTROL</title>
 
-    <link rel="stylesheet" href="/static/css/base.css">
-    <link rel="stylesheet" href="/static/css/clients.css">
-
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 <body>
 
-{% include "navbar.html" %}
+    <h2>SUPER PEST CONTROL</h2>
 
-<div class="page-container">
+    <table>
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Name</th>
+                <th>Phone No</th>
+                <th>Created Date</th>
+            </tr>
+        </thead>
+        <tbody id="client-table-body">
+            <!-- Data injected by JS -->
+        </tbody>
+    </table>
 
-    <div class="card">
-        <div class="page-title">Client List</div>
-
-        <input type="text" id="searchInput" class="search-box" placeholder="Search client name...">
-
-        <table>
-            <thead>
-                <tr>
-                    <th>User ID</th>
-                    <th>Name</th>
-                    <th>Phone No</th>
-                    <th>Created Date</th>
-                </tr>
-            </thead>
-            <tbody id="client-table-body"></tbody>
-        </table>
-    </div>
-
-</div>
-
-<script src="/static/js/app.js"></script>
-
+    <!-- JavaScript (ONLY ONCE, at bottom) -->
+    <script src="/static/js/app.js"></script>
 </body>
 </html>

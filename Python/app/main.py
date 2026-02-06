@@ -9,53 +9,18 @@ app = FastAPI(title="Pest Control Backend")
 
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
-
 # Templates
 templates = Jinja2Templates(directory="app/templates")
-# @app.get("/")
-# def home(request: Request):
-#     return templates.TemplateResponse("index.html", {"request": request})
-#
-# @app.get("/add-client")
-# def add_client_page(request: Request):
-#     return templates.TemplateResponse("add_client.html", {"request": request})
-#
-# @app.get("/subscriptions")
-# def subscription_page(request: Request):
-#     return templates.TemplateResponse("subscriptions.html", {"request": request}
-#     )
-
 @app.get("/")
 def home(request: Request):
-    return templates.TemplateResponse(
-        "index.html",
-        {"request": request, "active_page": "clients"}
-    )
-
-
-@app.get("/add-client")
-def add_client_page(request: Request):
-    return templates.TemplateResponse(
-        "add_client.html",
-        {"request": request, "active_page": "add_client"}
-    )
-
-
-@app.get("/subscriptions")
-def subscription_page(request: Request):
-    return templates.TemplateResponse(
-        "subscriptions.html",
-        {"request": request, "active_page": "subscriptions"}
-    )
-
+    return templates.TemplateResponse("index.html", {"request": request})
 
 @app.get("/api/clients", response_model=List[ShowClient])
 def get_clients():
     return show_client()
 
-@app.post("/add-client")
+@app.post("/clients")
 def create_client_api(payload: ClientCreate):
-    print("Here1")
     user_id = create_client(
         payload.user_name,
         payload.phone_no
@@ -95,8 +60,6 @@ def create_subscription_api(payload: SubscriptionCreate):
             detail="Internal server error"
         )
 
-@app.get("/userdetails/", response_model=List[GetUserDetails])
+@app.get("/userdetails/{user_id}", response_model=List[GetUserDetails])
 def get_usr_details_by_id(user_id: int):
     return get_user_details_by_id(user_id)
-
-
