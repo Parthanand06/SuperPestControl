@@ -9,18 +9,64 @@ app = FastAPI(title="Pest Control Backend")
 
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
+
 # Templates
 templates = Jinja2Templates(directory="app/templates")
+
 @app.get("/")
 def home(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse(
+        "index.html",
+        {"request": request, "active_page": "clients"}
+    )
+
+
+@app.get("/add-client")
+def add_client_page(request: Request):
+    return templates.TemplateResponse(
+        "add_client.html",
+        {"request": request, "active_page": "add_client"}
+    )
+
+
+@app.get("/subscriptions")
+def subscription_page(request: Request):
+    return templates.TemplateResponse(
+        "subscriptions.html",
+        {"request": request, "active_page": "subscriptions"}
+    )
+
+@app.get("/userdetails-page/{user_id}")
+def user_details_page(request: Request, user_id: int):
+    return templates.TemplateResponse(
+        "user_details.html",
+        {"request": request, "active_page": "clients", "user_id": user_id}
+    )
+
+@app.get("/client-details")
+def client_details_page(request: Request):
+    return templates.TemplateResponse(
+        "client_details.html",
+        {"request": request, "active_page": "client_details"}
+    )
+
+@app.get("/create-client-subscription")
+def create_client_subscription_page(request: Request):
+    return templates.TemplateResponse(
+        "create_client_subscription.html",
+        {"request": request, "active_page": "create_client_subscription"}
+    )
+
+
+
 
 @app.get("/api/clients", response_model=List[ShowClient])
 def get_clients():
     return show_client()
 
-@app.post("/clients")
+@app.post("/add-client")
 def create_client_api(payload: ClientCreate):
+    print("Here1")
     user_id = create_client(
         payload.user_name,
         payload.phone_no
@@ -63,3 +109,4 @@ def create_subscription_api(payload: SubscriptionCreate):
 @app.get("/userdetails/{user_id}", response_model=List[GetUserDetails])
 def get_usr_details_by_id(user_id: int):
     return get_user_details_by_id(user_id)
+

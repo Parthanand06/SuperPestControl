@@ -1,5 +1,0 @@
-fastapi
-uvicorn
-cx_Oracle
-python-dateutil
-pydantic
