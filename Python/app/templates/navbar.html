@@ -1,0 +1,29 @@
+<nav class="navbar">
+    <div class="nav-left">
+        <a href="/" class="logo">🐜 SUPER PEST CONTROL</a>
+    </div>
+
+    <div class="nav-right">
+        <a href="/create-client-subscription"
+           class="nav-link {% if active_page == 'create_client_subscription' %}active{% endif %}">
+            Create Client Subscription
+        </a>
+
+        <a href="/add-client" class="nav-link {% if active_page == 'add_client' %}active{% endif %}">
+            Add Client
+        </a>
+
+        <a href="/subscriptions" class="nav-link {% if active_page == 'subscriptions' %}active{% endif %}">
+            Add Subscription
+        </a>
+
+        <a href="/" class="nav-link {% if active_page == 'clients' %}active{% endif %}">
+            View Clients
+        </a>
+
+        <a href="/client-details" class="nav-link {% if active_page == 'client_details' %}active{% endif %}">
+            Client Details
+        </a>
+
+    </div>
+</nav>

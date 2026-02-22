@@ -1,0 +1,93 @@
+.page-container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 14px;
+    padding: 30px;
+    box-shadow: 0px 2px 12px rgba(0,0,0,0.12);
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.info-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    font-size: 15px;
+}
+
+.info-item {
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+}
+
+.info-label {
+    font-weight: bold;
+    color: #555;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.info-value {
+    font-size: 15px;
+    color: #222;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+thead {
+    background-color: #007bff;
+    color: white;
+}
+
+th {
+    padding: 14px;
+    text-align: left;
+    font-size: 15px;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+tbody tr:hover {
+    background-color: #e9f3ff;
+    cursor: pointer;
+    transition: 0.2s;
+}

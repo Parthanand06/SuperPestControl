@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Details</title>
+
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/user_details.css">
+</head>
+<body>
+
+{% include "navbar.html" %}
+
+<div class="page-container">
+
+    <div class="card">
+        <h2 class="page-title">User Details</h2>
+
+        <div id="user-info" class="info-box">
+            Loading user details...
+        </div>
+    </div>
+
+    <div class="card mt-20">
+        <h3 class="section-title">Visit Schedule</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Visit Date</th>
+                    <th>Visit Status</th>
+                </tr>
+            </thead>
+            <tbody id="visit-table-body"></tbody>
+        </table>
+    </div>
+
+</div>
+
+<script>
+    const USER_ID = {{ user_id }};
+</script>
+
+<script src="/static/js/user_details.js"></script>
+
+</body>
+</html>
